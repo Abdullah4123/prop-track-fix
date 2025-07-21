@@ -14,7 +14,7 @@ const MaintenanceRequestForm = () => {
     component: "",
     priority: "",
     description: "",
-    images: [] as File[]
+    images: []
   });
   const { toast } = useToast();
 
@@ -36,7 +36,7 @@ const MaintenanceRequestForm = () => {
     { value: "emergency", label: "Emergency - Urgent!", color: "text-destructive font-bold" }
   ];
 
-  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleImageUpload = (e) => {
     const files = Array.from(e.target.files || []);
     setFormData(prev => ({
       ...prev,
@@ -44,14 +44,14 @@ const MaintenanceRequestForm = () => {
     }));
   };
 
-  const removeImage = (index: number) => {
+  const removeImage = (index) => {
     setFormData(prev => ({
       ...prev,
       images: prev.images.filter((_, i) => i !== index)
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     
     if (!formData.component || !formData.description || !formData.priority) {

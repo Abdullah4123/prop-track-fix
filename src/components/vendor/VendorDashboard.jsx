@@ -4,22 +4,12 @@ import { Badge } from "@/components/ui/badge";
 import { Clock, CheckCircle, MapPin, Camera, DollarSign, Phone } from "lucide-react";
 import StatsCard from "@/components/dashboard/StatsCard";
 
-interface ServiceRequest {
-  id: string;
-  propertyAddress: string;
-  equipmentType: string;
-  priority: "low" | "medium" | "high" | "emergency";
-  status: "assigned" | "in-progress" | "completed" | "rejected";
-  description: string;
-  submittedDate: string;
-  tenantContact: string;
-  estimatedCost?: number;
-  images: string[];
-}
+// ServiceRequest object structure:
+// { id, propertyAddress, equipmentType, priority, status, description, submittedDate, tenantContact, estimatedCost, images }
 
 const VendorDashboard = () => {
   // Mock data
-  const requests: ServiceRequest[] = [
+  const requests = [
     {
       id: "req-001",
       propertyAddress: "123 Main St, Apt 4B",
@@ -45,31 +35,31 @@ const VendorDashboard = () => {
     }
   ];
 
-  const getPriorityBadge = (priority: string) => {
+  const getPriorityBadge = (priority) => {
     const variants = {
       low: "bg-muted/50 text-muted-foreground",
       medium: "bg-warning/10 text-warning border-warning/20",
       high: "bg-destructive/10 text-destructive border-destructive/20", 
       emergency: "bg-destructive text-destructive-foreground animate-pulse"
     };
-    return variants[priority as keyof typeof variants] || variants.medium;
+    return variants[priority] || variants.medium;
   };
 
-  const getStatusBadge = (status: string) => {
+  const getStatusBadge = (status) => {
     const variants = {
       assigned: "bg-pending/10 text-pending border-pending/20",
       "in-progress": "bg-warning/10 text-warning border-warning/20",
       completed: "bg-success/10 text-success border-success/20",
       rejected: "bg-muted/50 text-muted-foreground"
     };
-    return variants[status as keyof typeof variants] || variants.assigned;
+    return variants[status] || variants.assigned;
   };
 
-  const handleAcceptRequest = (requestId: string) => {
+  const handleAcceptRequest = (requestId) => {
     console.log("Accepting request:", requestId);
   };
 
-  const handleRejectRequest = (requestId: string) => {
+  const handleRejectRequest = (requestId) => {
     console.log("Rejecting request:", requestId);
   };
 

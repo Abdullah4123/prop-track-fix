@@ -1,18 +1,6 @@
-import { LucideIcon } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 
-interface StatsCardProps {
-  title: string;
-  value: string | number;
-  icon: LucideIcon;
-  trend?: {
-    value: number;
-    isPositive: boolean;
-  };
-  color?: "primary" | "success" | "warning" | "destructive" | "pending";
-}
-
-const StatsCard = ({ title, value, icon: Icon, trend, color = "primary" }: StatsCardProps) => {
+const StatsCard = ({ title, value, icon: Icon, trend, color = "primary" }) => {
   const getColorClasses = () => {
     switch (color) {
       case "success":

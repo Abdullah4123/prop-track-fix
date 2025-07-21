@@ -9,12 +9,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-interface HeaderProps {
-  currentPortal: "tenant" | "management" | "vendor";
-  onPortalSwitch: (portal: "tenant" | "management" | "vendor") => void;
-}
-
-const Header = ({ currentPortal, onPortalSwitch }: HeaderProps) => {
+const Header = ({ currentPortal, onPortalSwitch }) => {
   const getPortalTitle = () => {
     switch (currentPortal) {
       case "tenant":

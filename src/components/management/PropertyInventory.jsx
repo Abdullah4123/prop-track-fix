@@ -5,24 +5,14 @@ import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Plus, Search, Wrench, Calendar, DollarSign, AlertTriangle } from "lucide-react";
 
-interface Equipment {
-  id: string;
-  name: string;
-  type: string;
-  age: number;
-  lastService: string;
-  nextService: string;
-  condition: "excellent" | "good" | "fair" | "poor" | "critical";
-  replacementCost: number;
-  propertyId: string;
-  propertyAddress: string;
-}
+// Equipment object structure:
+// { id, name, type, age, lastService, nextService, condition, replacementCost, propertyId, propertyAddress }
 
 const PropertyInventory = () => {
   const [searchTerm, setSearchTerm] = useState("");
 
   // Mock data
-  const equipment: Equipment[] = [
+  const equipment = [
     {
       id: "eq-001",
       name: "Central AC Unit",
@@ -61,7 +51,7 @@ const PropertyInventory = () => {
     }
   ];
 
-  const getConditionBadge = (condition: string) => {
+  const getConditionBadge = (condition) => {
     const variants = {
       excellent: "bg-success/10 text-success border-success/20",
       good: "bg-primary/10 text-primary border-primary/20", 
@@ -69,10 +59,10 @@ const PropertyInventory = () => {
       poor: "bg-destructive/10 text-destructive border-destructive/20",
       critical: "bg-destructive text-destructive-foreground"
     };
-    return variants[condition as keyof typeof variants] || variants.good;
+    return variants[condition] || variants.good;
   };
 
-  const isServiceDue = (nextService: string) => {
+  const isServiceDue = (nextService) => {
     const today = new Date();
     const serviceDate = new Date(nextService);
     const daysDiff = Math.ceil((serviceDate.getTime() - today.getTime()) / (1000 * 3600 * 24));

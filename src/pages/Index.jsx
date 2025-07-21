@@ -8,10 +8,8 @@ import VendorDashboard from "@/components/vendor/VendorDashboard";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
-type Portal = "tenant" | "management" | "vendor";
-
 const Index = () => {
-  const [currentPortal, setCurrentPortal] = useState<Portal>("management");
+  const [currentPortal, setCurrentPortal] = useState("management");
 
   const renderTenantPortal = () => (
     <div className="space-y-6">
